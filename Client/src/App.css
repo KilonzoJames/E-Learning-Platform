@@ -1,0 +1,14 @@
+body{ 
+  background: rgb(231, 232, 236);
+  margin: 0 ;
+  padding: 0 ;
+  font-family: 'Times New Roman', Times, serif;
+  height: 100%;
+}
+DIV[data-lastpass-icon-root] {
+  display: none !important; /* This disables LastPass */
+}
+.active {
+  color: red;
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: flask-app
+    env: python=3.12
+    build_command: pip install -r requirements.txt
+    start_command: gunicorn -b 0.0.0.0:$PORT app:app
+    startCommand: ./start.sh
+    autoDeploy: true
+

@@ -1,0 +1,98 @@
+.form {
+    background-color: #0163af;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 60px 60px;
+  }
+  
+  .subtitle {
+    color: #eee;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    color: #015A9E;
+  }
+  
+  .ic1 {
+    margin-top: 40px;
+  }
+  
+  .ic2 {
+    margin-top: 30px;
+  }
+  
+  .input {
+    background-color: #EFF1F3;
+    border-radius: 12px;
+    font-size: 28px;
+    height: 100%;
+    outline: 0;
+    padding: 8px 32px 0;
+    width: 100%;
+  }
+  
+  .cut {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 76px;
+  }
+  
+  .cut-short {
+    width: 50px;
+  }
+  
+  .iLabel {
+    color: #65657b;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+  }
+  
+  .input:focus ~ .cut {
+    transform: translateY(8px);
+  }
+  
+  .input:focus ~ .iLabel {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+  }
+  
+  .input:not(:focus) ~ .iLabel {
+    color: #808097;
+  }
+  
+  .input:focus ~ .iLabel {
+    color: #dc2f55;
+  }
+  
+  .submit {
+    background-color: #2A9DF4;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .submit:active {
+    background-color: #06b;
+  }

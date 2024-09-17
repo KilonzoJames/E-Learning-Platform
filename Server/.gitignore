@@ -1,0 +1,7 @@
+# Ignore Pipenv lock file
+Pipfile.lock
+instance
+*.pyc
+config.cfg
+.env.cloudinary
+*.db
