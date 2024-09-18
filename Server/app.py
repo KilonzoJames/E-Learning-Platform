@@ -17,7 +17,7 @@ from .Routes.upload import upload
 app = Flask(__name__)
 
 # Configure SQLALCHEMY application settings
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URI')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
@@ -30,7 +30,14 @@ migrate.init_app(app, db)
 ma.init_app(app)
 
 # Enable Cross-Origin Resource Sharing (CORS)
-cors = CORS(app, resources={r"/*": {"origins": "https://e-learning-platform-1.vercel.app/", "methods": ['OPTIONS', "GET", "POST", "DELETE", "PUT"]}}, supports_credentials=True)
+CORS(app, resources={
+    r"/*": {
+        "origins": "https://e-learning-platform-1.vercel.app",
+        "methods": ['OPTIONS', 'GET', 'POST', 'DELETE', 'PUT'],
+        "allow_headers": "Content-Type"
+    }
+}, supports_credentials=True)
+
 
 # Initialize Flask-RESTful API
 api = Api(app)
@@ -41,7 +48,6 @@ jwt = JWTManager(app)
 
 # Register the blueprints for different routes in the app
 blueprints = [user_blue, profile_blue, post_blue, comment_blue, auth, upload]
-
 for blueprint in blueprints:
     app.register_blueprint(blueprint)
 
