@@ -1,7 +1,8 @@
 # Ignore Pipenv lock file
 Pipfile.lock
 instance
+*.db
 *.pyc
 config.cfg
 .env.cloudinary
-*.db
+utils.py

@@ -11,6 +11,7 @@ from .Routes.profile_route import profile_blue
 from .Routes.post_route import post_blue
 from .Routes.comment_route import comment_blue
 from .Routes.auth import auth
+from .Routes.upload import upload
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -39,7 +40,7 @@ app.config.from_object(Config)
 jwt = JWTManager(app)
 
 # Register the blueprints for different routes in the app
-blueprints = [user_blue, profile_blue, post_blue, comment_blue, auth]
+blueprints = [user_blue, profile_blue, post_blue, comment_blue, auth, upload]
 
 for blueprint in blueprints:
     app.register_blueprint(blueprint)
