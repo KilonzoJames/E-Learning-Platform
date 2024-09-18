@@ -6,6 +6,7 @@ import uuid
 
 from .auth import token_required
 from ..Models.user import User
+from ..Models.profile import Profile
 from ..Models.MarshmallowSchemas.user_schema import UserSchema
 from ..Models.config import db
 
@@ -49,6 +50,7 @@ class CreateUser(Resource):
 
         # Log the incoming data to see what the backend is receiving
         print("Incoming request data:", data)
+
         if not data or 'email' not in data or 'password' not in data:
             return jsonify({'message': 'Invalid input!'}), 400
 
@@ -59,8 +61,19 @@ class CreateUser(Resource):
         db.session.add(new_user)
         db.session.commit()
 
-        return jsonify({'message': 'New user created!'})
+        # Create a corresponding profile for the user
+        new_profile = Profile(
+            user_id=new_user.public_id,  # Link the profile to the user
+            username=data.get('username', ''),  # Default to empty string if not provided
+            email=new_user.email,  # Use the same email as the user
+            bio=data.get('bio', ''),  # Default to empty string if not provided
+            profile_picture=data.get('profile_picture', '')  # Default to empty string if not provided
+        )
+        db.session.add(new_profile)
+        db.session.commit()  # Commit the profile to the database
 
+        return jsonify({'message': 'New user and profile created!'})
+    
 class PromoteUser(Resource):
     @token_required
     def put(self, current_user, public_id):

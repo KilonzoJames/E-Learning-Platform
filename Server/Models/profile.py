@@ -5,7 +5,7 @@ class Profile(db.Model):
     __tablename__ = "profiles"
 
     id = db.Column(db.Integer, primary_key=True)
-    public_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Foreign key linking to User
+    user_id = db.Column(db.String, db.ForeignKey('users.public_id'), nullable=False)  # Foreign key linking to User
     username = db.Column(db.String(100))
     email = db.Column(db.String(100))
     bio = db.Column(db.String(255))

@@ -28,10 +28,10 @@ def seed_data():
 
         # Sample data for Profiles
         profiles = [
-            Profile(email="david@example.com", public_id=1, bio="Alice's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", public_id=2, bio="Bob's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", public_id=3, bio="Charlie's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", public_id=4, bio="David's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
+            Profile(email="david@example.com", user_id=1, bio="Alice's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
+            Profile(email="david@example.com", user_id=2, bio="Bob's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
+            Profile(email="david@example.com", user_id=3, bio="Charlie's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
+            Profile(email="david@example.com", user_id=4, bio="David's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
         ]
         db.session.add_all(profiles)
         db.session.commit()
