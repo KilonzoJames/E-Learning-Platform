@@ -38,6 +38,7 @@ function Login() {
     try {
       const response = await fetch("https://e-learning-platform-1-10z1.onrender.com/login", {
         method: "POST",
+        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
         },
