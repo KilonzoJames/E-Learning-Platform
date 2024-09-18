@@ -27,7 +27,7 @@ function ResetPassword() {
       email: dataObject.email,
       password: dataObject.password,
     };
-    const url = "http://127.0.0.1:5555/resetpassword";
+    const url = "/api/resetpassword";
     const patchData = {
       method: "PATCH",
       headers: {

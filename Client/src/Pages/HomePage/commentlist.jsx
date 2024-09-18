@@ -8,7 +8,7 @@ const CommentList = ({ comments, setComment }) => {
   const deleteAnnouncement = (selectedAnnouncement) => {
     const announcementId = selectedAnnouncement.id;
 
-    fetch(`http://127.0.0.1:5555/comments/${announcementId}`, {
+    fetch(`/api/comments/${announcementId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

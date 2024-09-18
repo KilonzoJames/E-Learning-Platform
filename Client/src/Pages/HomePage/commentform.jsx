@@ -18,7 +18,7 @@ function CommentForm() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://127.0.0.1:5555/comments/${public_id}`, {
+    fetch(`/api/comments/${public_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

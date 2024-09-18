@@ -15,7 +15,7 @@ const UploadFileForm = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5555/upload-profile-picture/${public_id}`,
+        `/api/upload-profile-picture/${public_id}`,
         {
           method: "POST",
           body: formData,

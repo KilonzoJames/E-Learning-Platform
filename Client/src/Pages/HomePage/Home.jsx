@@ -12,7 +12,7 @@ function Home() {
   const [activeComponent, setActiveComponent] = useState("profile");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/comments")
+    fetch("/api/comments")
       .then((response) => response.json())
       .then((data) => setComments(data))
       .catch((error) => console.error("Error fetching data:", error));
