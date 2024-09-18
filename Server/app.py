@@ -30,7 +30,7 @@ migrate.init_app(app, db)
 ma.init_app(app)
 
 # Enable Cross-Origin Resource Sharing (CORS)
-cors = CORS(app, resources={r"/*": {"origins": "http://localhost:5173", "methods": ["GET", "POST", "DELETE", "PUT"]}}, supports_credentials=True)
+cors = CORS(app, resources={r"/*": {"origins": "https://e-learning-platform-1-plqb557o3-kilonzojames-projects.vercel.app/", "methods": ["GET", "POST", "DELETE", "PUT"]}}, supports_credentials=True)
 
 # Initialize Flask-RESTful API
 api = Api(app)

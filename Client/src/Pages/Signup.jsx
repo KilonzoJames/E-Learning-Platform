@@ -50,7 +50,7 @@ function Register() {
       admin: user_type,
     };
 
-    fetch("http://127.0.0.1:5555/user/create", {
+    fetch("https://e-learning-platform-1-10z1.onrender.com/user/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

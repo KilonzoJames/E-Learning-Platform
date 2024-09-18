@@ -15,7 +15,7 @@ const UploadFileForm = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5555/upload-profile-picture/${public_id}`,
+        `https://e-learning-platform-1-10z1.onrender.com/upload-profile-picture/${public_id}`,
         {
           method: "POST",
           body: formData,

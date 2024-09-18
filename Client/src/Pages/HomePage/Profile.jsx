@@ -23,7 +23,7 @@ const Profile = () => {
   console.log("public_id from localStorage:", public_id); // Add this line for debugging
   useEffect(() => {
     if (public_id) {
-      fetch(`http://127.0.0.1:5555/profile/${public_id}`)
+      fetch(`https://e-learning-platform-1-10z1.onrender.com/profile/${public_id}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("Profile data:", data); // Add this for debugging
@@ -39,7 +39,7 @@ const Profile = () => {
 
     const putData = { email, bio, username };
 
-    fetch(`http://127.0.0.1:5555/profile/${public_id}`, {
+    fetch(`https://e-learning-platform-1-10z1.onrender.com/profile/${public_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

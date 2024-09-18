@@ -7,7 +7,7 @@ function CommentForm() {
   const public_id = localStorage.getItem("public_id");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/comments")
+    fetch("https://e-learning-platform-1-10z1.onrender.com/comments")
     .then((response) => response.json())
     .then((data) => {
       console.log("Profile data:", data); // Add this for debugging
@@ -18,7 +18,7 @@ function CommentForm() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://127.0.0.1:5555/comments/${public_id}`, {
+    fetch(`https://e-learning-platform-1-10z1.onrender.com/comments/${public_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
