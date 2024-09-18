@@ -72,4 +72,10 @@
   .title {
     @apply text-white text-[64px] font-semibold mt-[30px];
   }
+  .commentbtn {
+    @apply  px-4 py-2 text-base uppercase tracking-widest rounded-lg border border-[#1034aa] border-b-[#90c2ff] bg-gradient-to-br from-[#0034de] to-[#006eff] text-white font-bold shadow-[0px_2px_3px_rgba(0,13,56,0.28),inset_0px_4px_5px_rgba(0,112,240,1),inset_0px_-4px_5px_rgba(0,44,187,1)] transition duration-200 ease-in-out active:shadow-[inset_0px_4px_5px_rgba(0,112,240,1),inset_0px_-4px_5px_rgba(0,44,187,1)] active:scale-[0.995];
+  }
+  .container {
+    @apply bg-white border-2 border-greyish rounded-[20px] p-[20px]
+  }
 }

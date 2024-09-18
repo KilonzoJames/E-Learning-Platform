@@ -16,7 +16,8 @@ export default {
         labelgrey:"#939393",
         newgrey:"#4F4F4F",
         lightblue: "#2A9DF4",
-        faintblue: "#eff6ff"
+        faintblue: "#eff6ff",
+        greyish: "8d8d8d"
       },
     },
   },

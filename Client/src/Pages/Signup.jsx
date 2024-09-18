@@ -12,12 +12,22 @@ import {
   toggleConfPasswordVisibility,
   resetState,
 } from "../redux/signup_slice";
+import Swal from "sweetalert2";
 
 function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const dataObject = useSelector((state) => state.signup);
-  const { email, password, confirmPassword, user_type, showPassword, showConfPassword, passwordsMatch, error } = dataObject;
+  const {
+    email,
+    password,
+    confirmPassword,
+    user_type,
+    showPassword,
+    showConfPassword,
+    passwordsMatch,
+    error,
+  } = dataObject;
 
   const toggleVisibility = () => {
     dispatch(togglePasswordVisibility());
@@ -49,15 +59,19 @@ function Register() {
     })
       .then((r) => {
         // Log the response body content
-        return r.json().then(
-          (responseData) => {
+        return r.json().then((responseData) => {
           console.log(responseData, formData);
-          console.log('FormData sent:', formData);
+          console.log("FormData sent:", formData);
 
           if (r.ok) {
-            alert(
-              `${email}, you've been registered successfully!`
-            );
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: `${email}, you've been registered successfully!`,
+              showConfirmButton: false,
+              color: "#0163af",
+              timer: 5000,
+            });
             navigate("/login");
           } else {
             // Extract the error message from the response data
@@ -68,8 +82,8 @@ function Register() {
       })
       .catch((error) => {
         dispatch(setError(error.message));
-        console.error('Error:', error);
-        console.log('FormData sent:', formData);
+        console.error("Error:", error);
+        console.log("FormData sent:", formData);
       })
       .finally(() => {
         // Clear the form fields regardless of success or failure
@@ -77,8 +91,8 @@ function Register() {
       });
   }
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="bg-sweetblue fairplay rounded-[24px] p-12">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 lg:px-10">
+      <div className="bg-sweetblue fairplay rounded-[24px] p-6 sm:p-8 md:p-10 lg:p-12 w-full max-w-sm sm:max-w-md lg:max-w-lg">
         <p
           className="title pl-8 font-semibold 
         tracking-wide  shojumaru-regular hover:scale-110 transition-all duration-500"
@@ -156,7 +170,7 @@ function Register() {
             name="user_type"
             value={user_type}
             onChange={(e) => dispatch(setUserType(e.target.value))}
-            >
+          >
             <option value="">Select User Type</option>
             <option value="True">Admin</option>
             <option value="False">User</option>
@@ -167,9 +181,7 @@ function Register() {
               Login
             </a>
           </p>
-          {dataObject.error && (
-            <p className="text-red-500">{error}</p>
-          )}{" "}
+          {dataObject.error && <p className="text-red-500">{error}</p>}{" "}
           {/* Display error message */}
           <button className="authbtn " type="submit">
             Sign Up

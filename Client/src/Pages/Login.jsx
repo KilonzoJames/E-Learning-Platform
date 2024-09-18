@@ -10,6 +10,7 @@ import {
   resetState,
 } from "../redux/login_slice";
 import { setUser } from "../redux/public_id";
+import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
@@ -43,12 +44,18 @@ function Login() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) 
-        throw new Error(await response.text());
+      if (!response.ok) throw new Error(await response.text());
 
       const data = await response.json();
-      alert(`Logged in ${email} successfully!`);
-      
+      // alert(`Logged in ${email} successfully!`);
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: `Logged in ${email} successfully!`,
+        showConfirmButton: false,
+        color: "#0163af",
+        timer: 4000,
+      });
       // Store token in local storage
       localStorage.setItem("token", data.token);
       console.log(formData, data.token);
@@ -69,8 +76,8 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="form fairplay text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 lg:px-10">
+      <div className="form fairplay text-white w-full max-w-sm sm:max-w-md lg:max-w-lg">
         <form action="#" onSubmit={handleSubmit}>
           <div className="title shojumaru-regular">Welcome</div>
           <div className="subtitle playfair">
