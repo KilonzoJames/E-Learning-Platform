@@ -1,18 +1,13 @@
 export const SidebarData = [
   {
-    title: "Home", // Title for the Home section
+    title: "Intro", // Title for the Home section
     icon: "🏠", // Placeholder icon, replace with actual Icon component or image
-    link: "/home", // Route link for Home
+    link: "intro", // Route link for Home
   },
   {
     title: "Profile",
     icon: "👤",
     link: "profile",
-  },
-  {
-    title: "Header",
-    icon: "📜",
-    link: "/header",
   },
   {
     title: "Comment Form",
@@ -38,11 +33,6 @@ export const SidebarData = [
     title: "Notifications",
     icon: "🔔",
     link: "/notifications",
-  },
-  {
-    title: "Assignments",
-    icon: "📝",
-    link: "/assignments",
   },
   {
     title: "Grades",

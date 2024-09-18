@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import public_id from "../../redux/public_id";
 
 const UploadFileForm = () => {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
-  const public_id = useSelector((state) => state.public_id);
+  const public_id = localStorage.getItem("public_id");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -17,9 +15,9 @@ const UploadFileForm = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5555//upload-profile-picture/${public_id}`,
+        `http://127.0.0.1:5555/upload-profile-picture/${public_id}`,
         {
-          method: "PATCH",
+          method: "POST",
           body: formData,
         }
       );

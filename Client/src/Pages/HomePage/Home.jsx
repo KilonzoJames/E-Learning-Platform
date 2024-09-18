@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Intro from "./Intro";
 import Profile from "./Profile";
 import CommentForm from "./commentform";
 import CommentList from "./commentlist";
@@ -22,6 +23,8 @@ function Home() {
   }
   const renderComponent = () => {
     switch (activeComponent) {
+      case "intro":
+        return <Intro/>;
       case "profile":
         return <Profile />;
       case "CommentForm":
@@ -36,7 +39,7 @@ function Home() {
   return (
     <div className="home">
       <Sidebar setActiveComponent={setActiveComponent} />
-      <div className="rightdiv">
+      <div className="rightdiv flex flex-col h-screen">
         <Header />
         {renderComponent()} {/* Conditionally render component */}
       </div>
