@@ -52,7 +52,6 @@ function Register() {
 
     fetch("https://e-learning-platform-1-10z1.onrender.com/user/create", {
       method: "POST",
-      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
