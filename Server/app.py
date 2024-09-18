@@ -30,7 +30,13 @@ migrate.init_app(app, db)
 ma.init_app(app)
 
 # Enable Cross-Origin Resource Sharing (CORS)
-cors = CORS(app, resources={r"/*": {"origins": "http://localhost:5173", "methods": ["GET", "POST", "DELETE", "PUT"]}}, supports_credentials=True)
+CORS(app, resources={
+    r"/*": {
+        "origins": "http://localhost:5173",
+        "methods": ['GET', 'POST', 'DELETE', 'PUT'],
+        "allow_headers": "Content-Type"
+    }
+}, supports_credentials=True)
 
 # Initialize Flask-RESTful API
 api = Api(app)
