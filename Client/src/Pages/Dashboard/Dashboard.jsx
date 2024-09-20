@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { AiOutlineClose } from "react-icons/ai";
-
+import Card from "./Card";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const toggleNavBar = () => {
     setIsOpen(!isOpen);
   };
-
+  useEffect(() => {
+    fetch("/api/posts")
+      .then((response) => response.json())
+      .then((data) => setPosts(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
   return (
     <div>
       <header className="flex justify-between border-b-2 border-grey p-4">
@@ -25,6 +31,12 @@ const Dashboard = () => {
             <a href="">Take a quiz</a>
           </div>
           <div className="md:flex gap-6 hidden">
+            <a
+              href="/home"
+              className="border-2 border-sweetblue rounded-md font-bold text-sm py-1 px-2 text-sweetblue"
+            >
+              Home
+            </a>
             <a
               href="/login"
               className="border-2 border-sweetblue rounded-md font-bold text-sm py-1 px-2 text-sweetblue"
@@ -84,7 +96,9 @@ const Dashboard = () => {
           <h1 className="text-2xl font-bold text-sweetblue ">Recent Courses</h1>
         </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* ... Job Cards ... */}
+          {posts.map((card) => {
+            return <Card key={card.id} card={card} />;
+          })}
         </div>
       </section>
     </div>

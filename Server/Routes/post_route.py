@@ -10,12 +10,12 @@ post_blue = Blueprint('post', __name__)
 api = Api(post_blue)
 
 class PostResource(Resource):
-    @token_required
+    # @token_required
     def get(self):
         posts = Post.query.all()
         post_schema = PostSchema(many=True)
         json_string = post_schema.dump(posts)
-        return {"results": json_string}
+        return json_string
 
 class PostId(Resource):
     @token_required
