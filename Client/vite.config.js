@@ -6,7 +6,7 @@ export default defineConfig({
     proxy: {
       // Redirect requests made to `/api` to the backend API
       '/api': {
-        target: 'http://127.0.0.1:5555',
+        target: 'https://e-learning-platform-1-10z1.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),  // Optional: remove `/api` prefix
       }

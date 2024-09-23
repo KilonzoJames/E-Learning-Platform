@@ -35,7 +35,7 @@ CORS(
     app,
     resources={
         r"/*": {
-            "origins": "http://localhost:5173",
+            "origins": "https://e-learning-platform-1-git-deploy-kilonzojames-projects.vercel.app",
             "methods": ["GET", "POST", "DELETE", "PUT"],
             "allow_headers": "Content-Type",
         }
