@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/api/:path*",
+      "destination": "https://e-learning-platform-1-10z1.onrender.com/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/"
+    }
   ]
 }
