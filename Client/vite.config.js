@@ -8,6 +8,7 @@ export default defineConfig({
       '/api': {
         target: 'https://e-learning-platform-1-10z1.onrender.com',
         changeOrigin: true,
+        secure: false,  // Disable SSL certificate verification
         rewrite: (path) => path.replace(/^\/api/, ''),  // Optional: remove `/api` prefix
       },
     }, // Make sure this comma is here
