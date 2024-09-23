@@ -17,7 +17,7 @@ from .Routes.upload import upload
 app = Flask(__name__)
 
 # Configure SQLALCHEMY application settings
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///e-learning.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///e-learning.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
@@ -30,13 +30,17 @@ migrate.init_app(app, db)
 ma.init_app(app)
 
 # Enable Cross-Origin Resource Sharing (CORS)
-CORS(app, resources={
-    r"/*": {
-        "origins": "http://localhost:5173",
-        "methods": ['GET', 'POST', 'DELETE', 'PUT'],
-        "allow_headers": "Content-Type"
-    }
-}, supports_credentials=True)
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": "http://localhost:5173",
+            "methods": ["GET", "POST", "DELETE", "PUT"],
+            "allow_headers": "Content-Type",
+        }
+    },
+    supports_credentials=True,
+)
 
 # Initialize Flask-RESTful API
 api = Api(app)
@@ -52,5 +56,5 @@ for blueprint in blueprints:
     app.register_blueprint(blueprint)
 
 # Run the application on port 5555 in debug mode
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(port=5555, debug=True)

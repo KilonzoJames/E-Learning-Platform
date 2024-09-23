@@ -32,8 +32,14 @@ const signupSlice = createSlice({
     toggleConfPasswordVisibility(state) {
       state.showConfPassword = !state.showConfPassword;
     },
-    resetState() {
-      return initialState;
+    // Reset state but keep the error intact
+    resetState(state) {
+      const { error } = state; // Destructure error from the current state
+      return { ...initialState, error }; // Reset everything except the error
+    },
+    // Optionally, if you need to reset the error separately
+    resetError(state) {
+      state.error = null; // Explicitly reset the error
     },
   },
 });
@@ -48,6 +54,7 @@ export const {
   togglePasswordVisibility,
   toggleConfPasswordVisibility,
   resetState,
+  resetError,
 } = signupSlice.actions;
 
 export default signupSlice.reducer;

@@ -18,6 +18,7 @@ function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const dataObject = useSelector((state) => state.signup);
+
   const {
     email,
     password,
@@ -38,6 +39,7 @@ function Register() {
   };
   function handleSubmit(e) {
     e.preventDefault();
+
     // Check if passwords match
     if (password !== confirmPassword) {
       dispatch(setPasswordsMatch(false)); // Dispatch the action with payload false
@@ -58,12 +60,13 @@ function Register() {
       body: JSON.stringify(formData),
     })
       .then((r) => {
-        // Log the response body content
         return r.json().then((responseData) => {
-          console.log(responseData, formData);
+          console.log("Raw response:", r);
+          console.log("Parsed response data:", responseData);
           console.log("FormData sent:", formData);
 
           if (r.ok) {
+            // Success: Show success message
             Swal.fire({
               position: "top",
               icon: "success",
@@ -72,22 +75,44 @@ function Register() {
               color: "#0163af",
               timer: 5000,
             });
+
+            // Redirect to login after success
             navigate("/login");
           } else {
-            // Extract the error message from the response data
-            const errorMessage = responseData._schema[0];
-            dispatch(setError(errorMessage));
+            console.error("Error:", responseData.message || "Unknown error");
+
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Registration failed!",
+              text: responseData.message || "Unknown error",
+              showConfirmButton: true,
+              color: "#dc3545",
+            });
+
+            // Dispatching the error message to the Redux store
+            dispatch(setError(responseData.message || "Registration failed!"));console.log(error)
           }
         });
       })
       .catch((error) => {
-        dispatch(setError(error.message));
-        console.error("Error:", error);
-        console.log("FormData sent:", formData);
+        // Handle any network or fetch error
+        console.error("Request failed:", error);
+
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Request failed!",
+          text: error.message || "An unexpected error occurred.",
+          showConfirmButton: true,
+          color: "#dc3545",
+        });
+
+        dispatch(setError(error.message || "An unexpected error occurred."));
       })
       .finally(() => {
-        // Clear the form fields regardless of success or failure
-        dispatch(resetState(""));
+        // Clear form fields regardless of success or failure
+        dispatch(resetState());
       });
   }
   return (
@@ -181,7 +206,7 @@ function Register() {
               Login
             </a>
           </p>
-          {dataObject.error && <p className="text-red-500">{error}</p>}{" "}
+          {error && <p className="text-red-500">{error}</p>}
           {/* Display error message */}
           <button className="authbtn " type="submit">
             Sign Up
