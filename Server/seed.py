@@ -28,11 +28,12 @@ def seed_data():
 
         # Sample data for Profiles
         profiles = [
-            Profile(email="david@example.com", user_id=1, bio="Alice's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", user_id=2, bio="Bob's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", user_id=3, bio="Charlie's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
-            Profile(email="david@example.com", user_id=4, bio="David's bio", profile_picture="https://unsplash.com/photos/brown-starfish-on-blue-sand-2M_sDJ_agvs"),
+            Profile(email="david@example.com", user_id="722577344", bio="Alice's bio", profile_picture="..."),
+            Profile(email="david@example.com", user_id="0744556688", bio="Bob's bio", profile_picture="..."),
+            Profile(email="david@example.com", user_id="722577345", bio="Charlie's bio", profile_picture="..."),
+            Profile(email="david@example.com", user_id="4444444444", bio="David's bio", profile_picture="..."),
         ]
+
         db.session.add_all(profiles)
         db.session.commit()
 
@@ -48,10 +49,10 @@ def seed_data():
 
         # Sample data for Comments
         comments = [
-            Comment(user_id=1, post_id=1, content="Alice's comment on her own post", created_at=datetime.utcnow()),
-            Comment(user_id=2, post_id=2, content="Bob's comment on his own post", created_at=datetime.utcnow()),
-            Comment(user_id=3, post_id=3, content="Charlie's comment on his own post", created_at=datetime.utcnow()),
-            Comment(user_id=4, post_id=4, content="David's comment on his own post", created_at=datetime.utcnow()),
+            Comment(user_id="722577344", post_id=1, content="Alice's comment on her own post", created_at=datetime.utcnow()),
+            Comment(user_id="0744556688", post_id=2, content="Bob's comment on his own post", created_at=datetime.utcnow()),
+            Comment(user_id="722577345", post_id=3, content="Charlie's comment on his own post", created_at=datetime.utcnow()),
+            Comment(user_id="4444444444", post_id=4, content="David's comment on his own post", created_at=datetime.utcnow()),
         ]
         db.session.add_all(comments)
         db.session.commit()
