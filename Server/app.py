@@ -4,6 +4,7 @@ from flask_restful import Api
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from .Models import db, migrate, ma, Config
+import os
 
 # Register the blueprints for different routes in your app
 from .Routes.user_route import user_blue
@@ -17,7 +18,7 @@ from .Routes.upload import upload
 app = Flask(__name__)
 
 # Configure SQLALCHEMY application settings
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///e-learning.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
