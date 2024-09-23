@@ -11,8 +11,12 @@ export default defineConfig({
         secure: false,  // Disable SSL certificate verification
         rewrite: (path) => path.replace(/^\/api/, ''),  // Optional: remove `/api` prefix
       },
-    }, // Make sure this comma is here
+    }, 
   },
-  plugins: [react()], // Ensure correct placement here
+  plugins: [react()], 
+  build: {
+    rollupOptions: {
+      external: ["core-js-pure"], // Specify external dependencies here
+    },
+  },
 });
-
