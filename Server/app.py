@@ -35,7 +35,7 @@ CORS(
     app,
     resources={
         r"/*": {
-            "origins": "https://e-learning-platform-1-e1qdylgcl-kilonzojames-projects.vercel.app/",
+            "origins": "https://e-learning-platform-1.vercel.app/",
             "methods": ["GET", "POST", "DELETE", "PUT"],
             "allow_headers": "Content-Type",
         }
